@@ -1,0 +1,30 @@
+{
+  "name": "kushlash",
+  "version": "1.0.0",
+  "description": "Sliders",
+  "main": "main.js",
+  "scripts": {
+    "dev": "budo example/index.js",
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emkay/kushlash.git"
+  },
+  "keywords": [],
+  "author": "Michael Matuzak <mmatuzak@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emkay/kushlash/issues"
+  },
+  "homepage": "https://github.com/emkay/kushlash#readme",
+  "dependencies": {
+    "frp-keyboard": "^1.4.1",
+    "keycode": "^2.1.2",
+    "mercury": "^14.1.0"
+  },
+  "devDependencies": {
+    "budo": "^8.3.0",
+    "standard": "^7.1.1"
+  }
+}

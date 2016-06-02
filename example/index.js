@@ -1,15 +1,3 @@
-# kushlash
-Sliders
-
-Slide shows as functions using `virtual-hyperscript`.
-
-## Install
-
-`npm i kushlash`
-
-## Use
-
-```javascript
 const kushlash = require('..')
 const mercury = require('mercury')
 const h = mercury.h
@@ -46,4 +34,3 @@ function slide2 (state) {
 }
 
 kushlash(slides)
-```
