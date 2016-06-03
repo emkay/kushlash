@@ -1,7 +1,7 @@
 # kushlash
 Sliders
 
-Slide shows as functions using `virtual-hyperscript`.
+Slide shows as functions using [`virtual-dom/h`](https://github.com/Matt-Esch/virtual-dom/blob/master/virtual-hyperscript/README.md).
 
 ## Install
 
