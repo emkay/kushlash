@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/emkay/kushlash#readme",
   "dependencies": {
+    "choo": "^3.2.0",
     "frp-keyboard": "^1.4.1",
-    "keycode": "^2.1.2",
-    "mercury": "^14.1.0"
+    "keycode": "^2.1.2"
   },
   "devDependencies": {
     "budo": "^8.3.0",

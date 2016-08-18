@@ -1,26 +1,40 @@
-const mercury = require('mercury')
+const choo = require('choo')
+const html = require('choo/html')
+const app = choo()
+
 const Input = require('./input')
-const State = require('./state')
-const Update = require('./update')
+const update = require('./update')
 
 module.exports = function (slides) {
-  function render (state) {
-    const slide = Slides(slides, state)
-    return slide(state)
+  app.model({
+    state: {
+      slide: 0,
+      slideLen: slides.length,
+      percent: 0
+    },
+    reducers: {
+      update: (data, state) => ({slide: data.slide, percent: data.percent})
+    }
+  })
+
+  const input = Input()
+  const mainView = (state, prev, send) => {
+    input((k) => {
+      console.log(k)
+      update(state, k, send)
+    })
+
+    return html`
+      <main>
+        ${slides[state.slide](state)}
+      </main>
+    `
   }
 
-  function createApp () {
-    const events = Input()
-    const state = State(events, {slideLen: slides.length})
-    events(Update.changeSlide.bind(null, state))
+  app.router((route) => [
+    route('/', mainView)
+  ])
 
-    return state
-  }
-
-  const state = window.state = createApp()
-  mercury.app(document.body, state, render)
-}
-
-function Slides (slides, state) {
-  return slides[state.slide]
+  const tree = app.start()
+  document.body.appendChild(tree)
 }
