@@ -20,13 +20,19 @@ module.exports = function (slides) {
   const input = Input()
   const mainView = (state, prev, send) => {
     input((k) => {
-      console.log(k)
       update(state, k, send)
     })
 
     return html`
       <main>
-        ${slides[state.slide](state)}
+        <div style="background-color: #666; padding: 3px;" class="progress">
+          <div style="background-color: lightblue; height: 20px; width: ${state.percent}%;"></div>
+        </div>
+        <article>
+          <section>
+            ${slides[state.slide](state)}
+          </section>
+        </article>
       </main>
     `
   }

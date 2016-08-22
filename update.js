@@ -15,7 +15,7 @@ function changeSlide (state, direction, send) {
     }
   }
 
-  const percent = state.slide === 0 ? 0 : (state.slide / (state.slideLen - 1)) * 100
+  const percent = newSlide === 0 ? 0 : (newSlide / (state.slideLen - 1)) * 100
   send('update', {
     slide: newSlide,
     percent: percent
