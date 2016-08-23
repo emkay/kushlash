@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "dev": "budo example/index.js",
+    "release": "standard-version",
     "test": "standard"
   },
   "repository": {
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "budo": "^8.3.0",
-    "standard": "^7.1.1"
+    "standard": "^7.1.1",
+    "standard-version": "^2.4.0"
   }
 }
