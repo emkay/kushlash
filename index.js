@@ -6,23 +6,41 @@ const Input = require('./input')
 const update = require('./update')
 
 module.exports = function (slides) {
+  const input = Input()
+
   app.model({
     state: {
       slide: 0,
       slideLen: slides.length,
       percent: 0
     },
+    subscriptions: [
+      (send, done) => {
+        input(update.bind(null, send, done))
+      }
+    ],
     reducers: {
-      update: (data, state) => ({slide: data.slide, percent: data.percent})
+      update: (data, state) => {
+        const direction = data.direction
+        let newSlide = state.slide
+
+        if (direction === 'right') {
+          if (state.slide < state.slideLen - 1) {
+            newSlide = state.slide + 1
+          }
+        } else if (direction === 'left') {
+          if (state.slide > 0) {
+            newSlide = state.slide - 1
+          }
+        }
+
+        const percent = newSlide === 0 ? 0 : (newSlide / (state.slideLen - 1)) * 100
+        return {slide: newSlide, percent: percent}
+      }
     }
   })
 
-  const input = Input()
   const mainView = (state, prev, send) => {
-    input((k) => {
-      update(state, k, send)
-    })
-
     return html`
       <main>
         <div style="background-color: #666; padding: 3px;" class="progress">
