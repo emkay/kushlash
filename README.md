@@ -10,40 +10,44 @@ Slide shows as functions using [`virtual-dom/h`](https://github.com/Matt-Esch/vi
 ## Use
 
 ```javascript
-const kushlash = require('..')
-const mercury = require('mercury')
-const h = mercury.h
+const kushlash = require('kushlash')
+const yo = require('yo-yo')
 
-const slides = [
-  slide1,
-  slide2
-]
-
-function slide1 (state) {
-  return h('div#app', [
-    h('div.main', [
-      h('div.row', [
-        h('div.item', [h('h1', 'Kushlash'), h('h2', 'or Sliderz')])
-      ])
-    ])
-  ])
+function slide (state) {
+  return yo`<div id="app">
+    <div class="main">
+      <div class="row">
+        <div class="item">
+          <h1>Kushlash</h1>
+          <h2>or Sliderz</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="item">
+          <p>By Michael Matuzak</p>
+        </div>
+      </div>
+    </div>
+  </div>`
 }
 
 function slide2 (state) {
-  return h('div#app', [
-    h('div.main', [
-      h('div.row', [
-        h('div.item', [h('h1', 'Kushlash'), h('h2', 'or Sliderz')])
-      ]),
-
-      h('div.row', [
-        h('div.item', [
-          h('p', 'By Michael Matuzak')
-        ])
-      ])
-    ])
-  ])
+  return yo`<div id="app">
+    <div class="main">
+      <div class="row">
+        <div class="item">
+          <h1>Kushlash</h1>
+          <h2>or Sliderz</h2>
+        </div>
+      </div>
+    </div>
+  </div>`
 }
+
+const slides = [
+  slide,
+  slide2
+]
 
 kushlash(slides)
 ```
